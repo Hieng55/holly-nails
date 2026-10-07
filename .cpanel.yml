@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/hollynai/public_html
+    - /usr/bin/env npm ci --no-audit --no-fund
+    - /usr/bin/env npm run build
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R out/. $DEPLOYPATH/
