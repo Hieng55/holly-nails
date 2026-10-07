@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MorphIcon } from "morphicons/react";
 import { Menu, X } from "lucide";
 import { CalendarDays, Clock3, Gem, MapPin, Phone, Quote, ShieldCheck, Sparkles, Star } from "lucide-react";
@@ -143,9 +144,9 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
         </div>
 
         <div className="header-shell nav-row">
-          <a className="brand" href="/" aria-label="Holly Nails and Spa home">
+          <Link className="brand" href="/" aria-label="Holly Nails and Spa home">
             <Image src="/logo-holly.png" alt="Holly Nails & Spa" width={196} height={61} priority />
-          </a>
+          </Link>
 
           <nav className="desktop-nav" aria-label="Primary navigation">
             {links.map(([label, href], index) => (
@@ -379,7 +380,7 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
       <footer className="site-footer">
         <div className="footer-main">
           <div className="footer-brand">
-            <a href="/" aria-label="Holly Nails & Spa home"><Image src="/logo-holly.png" alt="Holly Nails & Spa" width={210} height={66} /></a>
+            <Link href="/" aria-label="Holly Nails & Spa home"><Image src="/logo-holly.png" alt="Holly Nails & Spa" width={210} height={66} /></Link>
             <p>Refined nail care, thoughtful artistry and a little time reserved just for you.</p>
             <div className="footer-socials" aria-label="Social media">
               <a href="https://www.facebook.com/profile.php?id=61585411765707" target="_blank" rel="noreferrer" aria-label="Facebook"><img src="https://raw.githubusercontent.com/glincker/thesvg/main/public/icons/facebook/default.svg" alt="" /></a>
