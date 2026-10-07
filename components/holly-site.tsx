@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MorphIcon } from "morphicons/react";
@@ -109,6 +109,7 @@ const galleryImages = [1, 2, 3, 7, 8, 9, 10, 11, 12, 13, 14].map((id) => ({
 export type SitePage = "home" | "services" | "about" | "gallery" | "contact";
 
 export default function HollySite({ page = "home" }: { page?: SitePage }) {
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const [open, setOpen] = useState(false);
   const [activeService, setActiveService] = useState("pedicures");
   const [galleryOpen, setGalleryOpen] = useState(false);
@@ -131,6 +132,38 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
     galleryApi.on("select", updateSlide);
     return () => { galleryApi.off("select", updateSlide); };
   }, [galleryApi]);
+
+  useEffect(() => {
+    if (page !== "home") return;
+
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const playVideo = () => {
+      if (document.visibilityState === "visible" && video.paused) {
+        void video.play().catch(() => {
+          // A user gesture or a later lifecycle event will retry playback.
+        });
+      }
+    };
+
+    video.addEventListener("canplay", playVideo);
+    document.addEventListener("visibilitychange", playVideo);
+    window.addEventListener("pageshow", playVideo);
+    window.addEventListener("pointerdown", playVideo, { once: true });
+    playVideo();
+
+    return () => {
+      video.removeEventListener("canplay", playVideo);
+      document.removeEventListener("visibilitychange", playVideo);
+      window.removeEventListener("pageshow", playVideo);
+      window.removeEventListener("pointerdown", playVideo);
+    };
+  }, [page]);
 
   return (
     <main id="home" className="min-h-screen bg-[#090908] text-[#f8f2e6]">
@@ -187,14 +220,16 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
       <div className={page === "home" ? "page-content" : "page-content inner-page"}>
       {page === "home" && <section className="hero" aria-labelledby="hero-title">
         <video
+          ref={heroVideoRef}
           className="hero-video"
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           aria-hidden="true"
         >
-          <source src="https://assets.mixkit.co/videos/13084/13084-720.mp4" type="video/mp4" />
+          <source src="/holly-hero.mp4" type="video/mp4" />
         </video>
         <div className="video-shade" aria-hidden="true" />
         <div className="header-shell hero-content">
