@@ -371,6 +371,16 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
           </div>
 
           <div className="contact-map">
+            <div className="contact-storefront">
+              <Image
+                src="/holly-storefront.jpg"
+                alt="Storefront of Holly Nails & Spa at 2316 Dell Range Boulevard in Cheyenne, Wyoming"
+                width={1785}
+                height={1338}
+                sizes="(max-width: 1050px) 100vw, 55vw"
+              />
+              <span>Look for our storefront at 2316 Dell Range Blvd</span>
+            </div>
             <iframe title="Holly Nails & Spa location map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3003.806419276886!2d-104.7869027234655!3d41.16057521003247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876f3b3e4bd28cc1%3A0x884ba603b27751a5!2sHolly%20Nails%20%26%20Spa!5e0!3m2!1sen!2s!4v1791234469477!5m2!1sen!2s" allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin" />
             <div className="map-label"><span>H</span><p><strong>Holly Nails &amp; Spa</strong>Cheyenne, Wyoming</p></div>
           </div>
