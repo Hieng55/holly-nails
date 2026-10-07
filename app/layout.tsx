@@ -44,6 +44,9 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
+  verification: {
+    google: "AJtQAvY_JYfUJ1X9QJ-CdsxcCa2m0piLz0YKhCV9iIg",
+  },
 };
 
 const localBusinessSchema = {
