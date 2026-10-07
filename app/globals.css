@@ -78,9 +78,11 @@ button { font: inherit; }
 .hero-book { min-height: 54px; padding-inline: 28px; color: #0b0a08; background: linear-gradient(110deg, #b98e49, #e8ca83, #b98c47); }
 .text-link { padding: 13px 0; border-bottom: 1px solid rgba(244,225,185,.35); color: #eee5d5; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
 .text-link span { margin-left: 9px; color: var(--gold-light); }
-.hero-foot { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
-.hero-foot p { margin: 0; padding: 22px 0; color: #c8c0b2; font-family: var(--font-forum), Georgia, serif; font-size: 17px; letter-spacing: .04em; }
-.hero-foot p + p { border-left: 1px solid var(--line); padding-left: 42px; }
+.hero-foot { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--line); }
+.hero-foot a { min-width: 0; display: flex; align-items: center; gap: 12px; padding: 22px 16px; color: #c8c0b2; font-family: var(--font-forum), Georgia, serif; font-size: 15px; letter-spacing: .03em; transition: color .25s, background .25s; }
+.hero-foot a:first-child { padding-left: 0; }
+.hero-foot a + a { border-left: 1px solid var(--line); }
+.hero-foot a:hover { color: var(--gold-light); background: rgba(255,255,255,.035); }
 .hero-foot span { color: var(--gold); margin-right: 18px; font-family: Arial, sans-serif; font-size: 10px; }
 .placeholder-section { min-height: 760px; position: relative; padding: clamp(84px, 9vw, 140px) max(24px, calc((100vw - 1360px)/2)); overflow: hidden; background: #eee7d9; color: #17130d; scroll-margin-top: 96px; }
 .placeholder-section::before { content: "HOLLY"; position: absolute; top: 12px; right: -15px; color: rgba(91,67,34,.045); font-family: var(--font-forum), Georgia, serif; font-size: clamp(130px, 20vw, 310px); line-height: 1; pointer-events: none; }
@@ -288,6 +290,10 @@ button { font: inherit; }
   .footer-booking { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
   .footer-booking p { margin: 0; }
   .footer-booking a { min-width: 230px; }
+  .hero-foot { grid-template-columns: repeat(3, 1fr); }
+  .hero-foot a:first-child { padding-left: 16px; }
+  .hero-foot a:nth-child(n+4) { border-top: 1px solid var(--line); }
+  .hero-foot a:nth-child(4) { border-left: 0; }
 }
 
 @media (max-width: 640px) {
@@ -308,9 +314,12 @@ button { font: inherit; }
   .hero-intro { margin-top: 26px; font-size: 16px; line-height: 1.6; }
   .hero-actions { align-items: stretch; flex-direction: column; gap: 12px; margin-top: 28px; }
   .text-link { width: max-content; }
-  .hero-foot { grid-template-columns: 1fr; }
-  .hero-foot p { padding: 14px 0; font-size: 13px; }
-  .hero-foot p + p { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+  .hero-foot { grid-template-columns: repeat(2, 1fr); }
+  .hero-foot a { min-height: 58px; gap: 8px; padding: 12px 8px; font-size: 12px; }
+  .hero-foot a:first-child { padding-left: 8px; }
+  .hero-foot a:nth-child(odd) { border-left: 0; }
+  .hero-foot a:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .hero-foot span { margin-right: 2px; font-size: 8px; }
   .placeholder-section { padding-block: 76px; }
   .about-shell { gap: 48px; }
   .about-visual { min-height: 430px; }
@@ -345,6 +354,7 @@ button { font: inherit; }
   .contact-shell { width: min(100% - 32px, 1360px); grid-template-columns: 1fr; gap: 48px; }
   .contact-details { padding: 28px 0; }
   .contact-map { grid-column: auto; min-height: 570px; grid-template-rows: 300px 270px; }
+  .contact-storefront img { object-fit: fill; }
   .contact-map iframe { min-height: 270px; }
   .site-footer { padding-top: 62px; }
   .footer-main { grid-template-columns: 1fr 1fr; gap: 42px 28px; }

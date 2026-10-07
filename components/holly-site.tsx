@@ -219,9 +219,11 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
           </div>
         </div>
         <div className="hero-foot header-shell">
-          <p><span>01</span> Luxury Manicures</p>
-          <p><span>02</span> Spa Pedicures</p>
-          <p><span>03</span> Signature Nail Art</p>
+          {serviceGroups.map((group, index) => (
+            <Link href="/services" key={group.id}>
+              <span>{String(index + 1).padStart(2, "0")}</span>{group.label}
+            </Link>
+          ))}
         </div>
       </section>}
 
