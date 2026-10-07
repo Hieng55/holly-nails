@@ -151,17 +151,27 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
       }
     };
 
+    const keepPlaying = () => {
+      if (document.visibilityState === "visible" && !video.ended) {
+        window.setTimeout(playVideo, 50);
+      }
+    };
+
     video.addEventListener("canplay", playVideo);
+    video.addEventListener("pause", keepPlaying);
     document.addEventListener("visibilitychange", playVideo);
     window.addEventListener("pageshow", playVideo);
-    window.addEventListener("pointerdown", playVideo, { once: true });
+    window.addEventListener("pointerdown", playVideo);
+    window.addEventListener("touchstart", playVideo, { passive: true });
     playVideo();
 
     return () => {
       video.removeEventListener("canplay", playVideo);
+      video.removeEventListener("pause", keepPlaying);
       document.removeEventListener("visibilitychange", playVideo);
       window.removeEventListener("pageshow", playVideo);
       window.removeEventListener("pointerdown", playVideo);
+      window.removeEventListener("touchstart", playVideo);
     };
   }, [page]);
 
@@ -227,6 +237,9 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
           loop
           playsInline
           preload="auto"
+          disablePictureInPicture
+          controlsList="nodownload noplaybackrate nofullscreen"
+          tabIndex={-1}
           aria-hidden="true"
         >
           <source src="/holly-hero.mp4" type="video/mp4" />
