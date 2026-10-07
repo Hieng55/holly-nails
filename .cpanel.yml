@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/hollynai/public_html
-    - /usr/bin/env npm ci --no-audit --no-fund
-    - /usr/bin/env npm run build
     - /bin/mkdir -p $DEPLOYPATH
+    - /bin/bash -c 'if [ -f "$DEPLOYPATH/index.php" ]; then /bin/mv -f "$DEPLOYPATH/index.php" "$DEPLOYPATH/index.wordpress-backup.php"; fi'
+    - /bin/bash -c 'if [ -f "$DEPLOYPATH/.htaccess" ]; then /bin/mv -f "$DEPLOYPATH/.htaccess" "$DEPLOYPATH/.htaccess.wordpress-backup"; fi'
     - /bin/cp -R out/. $DEPLOYPATH/

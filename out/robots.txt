@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://hollynailsandspacheyenne.com
+Sitemap: https://hollynailsandspacheyenne.com/sitemap.xml
