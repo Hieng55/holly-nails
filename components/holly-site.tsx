@@ -139,6 +139,15 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
     const video = heroVideoRef.current;
     if (!video) return;
 
+    // Zalo's in-app browser can promote a blocked background video to its
+    // fullscreen media player after any user tap. Use the hero fallback there.
+    if (/Zalo/i.test(navigator.userAgent)) {
+      video.pause();
+      video.removeAttribute("autoplay");
+      video.style.display = "none";
+      return;
+    }
+
     video.muted = true;
     video.defaultMuted = true;
     video.playsInline = true;
@@ -161,8 +170,6 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
     video.addEventListener("pause", keepPlaying);
     document.addEventListener("visibilitychange", playVideo);
     window.addEventListener("pageshow", playVideo);
-    window.addEventListener("pointerdown", playVideo);
-    window.addEventListener("touchstart", playVideo, { passive: true });
     playVideo();
 
     return () => {
@@ -170,8 +177,6 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
       video.removeEventListener("pause", keepPlaying);
       document.removeEventListener("visibilitychange", playVideo);
       window.removeEventListener("pageshow", playVideo);
-      window.removeEventListener("pointerdown", playVideo);
-      window.removeEventListener("touchstart", playVideo);
     };
   }, [page]);
 

@@ -60,7 +60,7 @@ button { font: inherit; }
 .menu-button { display: none; width: 48px; height: 48px; align-items: center; justify-content: center; border: 1px solid var(--line); background: transparent; color: var(--gold-light); cursor: pointer; }
 .mobile-panel { display: none; }
 .inner-page { padding-top: 142px; }
-.hero { min-height: 100vh; min-height: 100svh; position: relative; display: flex; flex-direction: column; overflow: hidden; padding-top: 142px; background: #090908; }
+.hero { min-height: 100vh; min-height: 100svh; position: relative; display: flex; flex-direction: column; overflow: hidden; padding-top: 142px; background: #090908 url("/hero-fallback.jpg") center / cover no-repeat; }
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none !important; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: none; filter: saturate(.65) contrast(1.08); }
 .hero-video::-webkit-media-controls { display: none !important; }
 .video-shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(5,5,4,.58), rgba(5,5,4,.52) 38%, rgba(5,5,4,.78)), linear-gradient(90deg, rgba(6,6,5,.4), rgba(6,6,5,.12), rgba(6,6,5,.4)); }
