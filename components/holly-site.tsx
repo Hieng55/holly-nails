@@ -238,7 +238,10 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
           playsInline
           preload="auto"
           disablePictureInPicture
+          disableRemotePlayback
           controlsList="nodownload noplaybackrate nofullscreen"
+          draggable={false}
+          onContextMenu={(event) => event.preventDefault()}
           tabIndex={-1}
           aria-hidden="true"
         >
