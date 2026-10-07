@@ -350,6 +350,7 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
             <h2 id="contact-title">Your time to<br /><em>feel beautiful.</em></h2>
             <p className="contact-intro">Stop by our Cheyenne salon or call to reserve your next manicure, pedicure or nail enhancement.</p>
             <div className="contact-actions">
+              <a className="contact-book" href="https://www.lldtek.org/salon/appt/VjFsZk1URTROVGM9" target="_blank" rel="noreferrer"><CalendarDays size={17} /> Book Appointment</a>
               <a className="contact-call" href="tel:+13073423689"><Phone size={17} /> Call (307) 342-3689</a>
               <a className="contact-directions" href="https://maps.google.com/?cid=9821125947220775333" target="_blank" rel="noreferrer"><MapPin size={17} /> Get directions</a>
             </div>

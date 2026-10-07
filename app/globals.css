@@ -210,9 +210,11 @@ button { font: inherit; }
 .contact-copy h2 em { color: #a77a39; font-weight: 400; }
 .contact-intro { max-width: 520px; margin: 28px 0 0; color: #6d6456; font-size: 14px; line-height: 1.8; }
 .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.contact-call, .contact-directions { min-height: 49px; display: inline-flex; align-items: center; gap: 9px; padding: 0 18px; font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.contact-book, .contact-call, .contact-directions { min-height: 49px; display: inline-flex; align-items: center; gap: 9px; padding: 0 18px; font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; transition: transform .25s, background .25s; }
+.contact-book { background: linear-gradient(110deg, #b98e49, #e8ca83, #b98c47); color: #17130d; }
 .contact-call { background: #17130d; color: #e5c77f; }
 .contact-directions { border: 1px solid rgba(126,93,43,.38); color: #5e482a; }
+.contact-book:hover, .contact-call:hover, .contact-directions:hover { transform: translateY(-2px); }
 .contact-socials { display: flex; align-items: center; gap: 10px; margin-top: 34px; }
 .contact-socials > span { margin-right: 5px; color: #7d7468; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; }
 .contact-socials a { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid rgba(126,93,43,.22); border-radius: 50%; background: rgba(255,255,255,.45); transition: transform .25s, border-color .25s; }
@@ -352,6 +354,9 @@ button { font: inherit; }
   .gallery-lightbox { width: calc(100vw - 20px); height: calc(100svh - 20px); }
   .lightbox-image { padding: 24px 16px 88px; }
   .contact-shell { width: min(100% - 32px, 1360px); grid-template-columns: 1fr; gap: 48px; }
+  .contact-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .contact-actions a { justify-content: center; padding-inline: 10px; }
+  .contact-book { grid-column: 1 / -1; }
   .contact-details { padding: 28px 0; }
   .contact-map { grid-column: auto; min-height: 570px; grid-template-rows: 300px 270px; }
   .contact-storefront img { object-fit: fill; }
