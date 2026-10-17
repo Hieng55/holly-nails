@@ -20,16 +20,22 @@ const links = [
 const serviceGroups = [
   {
     id: "pedicures", label: "Pedicures", eyebrow: "Foot care rituals",
+    image: "/images/services/pedicures.webp",
+    imageAlt: "Colorful pedicure nail art",
+    imagePosition: "center",
     items: [
       { name: "Classic Pedicure", price: "$35", time: "25 min", description: "Foot soak, nail shaping, cuticle care and a relaxing lotion massage.", note: "Gel +$20 · Callus removal +$7" },
-      { name: "Deluxe Pedicure", price: "$46", description: "Classic care elevated with sugar scrub, lemon grass cooling gel therapy, hot towel wrap and lotion massage.", note: "Gel +$20" },
-      { name: "Luxury Pedicure", price: "$61", time: "35 min", description: "Choose a soothing scent—jasmine, lavender, orange or green tea—with paraffin wax and hot stone massage.", note: "Gel +$15" },
-      { name: "Collagen Pedicure", price: "$71", time: "45 min", description: "A luxurious collagen treatment designed to nourish, soften and restore tired skin, finished with a 10-minute massage.", note: "Gel +$15" },
-      { name: "Volcano Pedicure", price: "$86", time: "55 min", description: "A warming Volcano spa treatment to ease tension, refresh and revitalize tired feet, with a 15-minute massage.", note: "Gel +$15" },
+      { name: "Deluxe Pedicure", price: "$45", description: "Classic care elevated with sugar scrub, lemon grass cooling gel therapy, hot towel wrap and lotion massage.", note: "Gel +$20" },
+      { name: "Luxury Pedicure", price: "$60", time: "35 min", description: "Choose a soothing scent—jasmine, lavender, orange or green tea—with paraffin wax and hot stone massage.", note: "Gel +$15" },
+      { name: "Collagen Pedicure", price: "$70", time: "45 min", description: "A luxurious collagen treatment designed to nourish, soften and restore tired skin, finished with a 10-minute massage.", note: "Gel +$15" },
+      { name: "Volcano Pedicure", price: "$85", time: "55 min", description: "A warming Volcano spa treatment to ease tension, refresh and revitalize tired feet, with a 15-minute massage.", note: "Gel +$15" },
     ],
   },
   {
     id: "manicures", label: "Manicures", eyebrow: "Beautiful hands",
+    image: "/images/services/manicures.webp",
+    imageAlt: "Nail technician applying polish during a manicure",
+    imagePosition: "center",
     items: [
       { name: "Manicure Without Polish", price: "$25", description: "Essential shaping and cuticle care for naturally polished hands." },
       { name: "Manicure With Regular Polish", price: "Ask us", description: "Classic manicure completed with your choice of regular color." },
@@ -41,6 +47,9 @@ const serviceGroups = [
   },
   {
     id: "enhancements", label: "Acrylic & Dip", eyebrow: "Nail enhancements",
+    image: "/images/services/acrylic-dip.webp",
+    imageAlt: "Elegant nail art with a glossy finish",
+    imagePosition: "center",
     items: [
       { name: "Acrylic Overlay — New Set", price: "$55" },
       { name: "Acrylic With Gel Color", price: "$60+" },
@@ -54,6 +63,9 @@ const serviceGroups = [
   },
   {
     id: "gel", label: "Gel Nails", eyebrow: "Modern structure",
+    image: "/images/services/gel-nails.webp",
+    imageAlt: "Purple and gold gel manicure",
+    imagePosition: "center",
     items: [
       { name: "Gel-X — New Set", price: "$65+" },
       { name: "Builder Gel — New Set", price: "$65+" },
@@ -65,6 +77,9 @@ const serviceGroups = [
   },
   {
     id: "kids", label: "Kids", eyebrow: "Little luxuries",
+    image: "/images/services/kids.webp",
+    imageAlt: "Colorful kids manicure",
+    imagePosition: "center",
     items: [
       { name: "Kids Regular Pedicure", price: "$30" },
       { name: "Kids Regular Manicure", price: "$20" },
@@ -75,6 +90,9 @@ const serviceGroups = [
   },
   {
     id: "extras", label: "Add-ons & Waxing", eyebrow: "Finishing touches",
+    image: "/images/services/addons-waxing.webp",
+    imageAlt: "Professional beauty treatment in the salon",
+    imagePosition: "center",
     items: [
       { name: "Repair Under Warranty", price: "Free" },
       { name: "Nail Fix Without Warranty", price: "$7+" },
@@ -326,7 +344,13 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
             ))}
           </div>
           <div className="service-menu" role="tabpanel">
-            <div className="service-menu-title"><span>{currentServices.eyebrow}</span><h3>{currentServices.label}</h3></div>
+            <div className="service-menu-title">
+              <div className="service-menu-copy"><span>{currentServices.eyebrow}</span><h3>{currentServices.label}</h3></div>
+              <figure className="service-menu-image" key={currentServices.id}>
+                <img src={currentServices.image} alt={currentServices.imageAlt} style={{ objectPosition: currentServices.imagePosition }} loading="lazy" decoding="async" />
+                <figcaption>Holly Nails &amp; Spa</figcaption>
+              </figure>
+            </div>
             <div className="service-list">
               {currentServices.items.map((item) => (
                 <article className="service-item" key={item.name}>
