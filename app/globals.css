@@ -59,6 +59,12 @@ button { font: inherit; }
 .desktop-book { justify-self: end; }
 .menu-button { display: none; width: 48px; height: 48px; align-items: center; justify-content: center; border: 1px solid var(--line); background: transparent; color: var(--gold-light); cursor: pointer; }
 .mobile-panel { display: none; }
+body:has(.welcome-popup) [data-slot="dialog-overlay"] { background: rgba(0, 0, 0, .25); }
+.welcome-popup { width: min(480px, calc(100vw - 40px)); max-width: none; max-height: calc(100svh - 32px); display: block; gap: 0; overflow: hidden auto; padding: 0; border: 1px solid rgba(231,201,132,.34); border-radius: 0; background: #08080a; color: var(--cream); box-shadow: 0 32px 100px rgba(0,0,0,.65); }
+.welcome-popup > button[data-slot="dialog-close"] { z-index: 3; top: 14px; right: 14px; width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid rgba(231,201,132,.38); border-radius: 0; background: rgba(9,9,8,.76); color: var(--gold-light); opacity: 1; cursor: pointer; }
+.welcome-popup > button[data-slot="dialog-close"]:hover { background: var(--gold-light); color: var(--ink); }
+.welcome-popup > button[data-slot="dialog-close"] svg { width: 18px; height: 18px; }
+.welcome-popup-artwork { width: 100%; height: auto; display: block; }
 .inner-page { padding-top: 142px; }
 .hero { min-height: 100vh; min-height: 100svh; position: relative; display: flex; flex-direction: column; overflow: hidden; padding-top: 142px; background: #090908 url("/hero-fallback.jpg") center / cover no-repeat; }
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none !important; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: none; filter: saturate(.65) contrast(1.08); }
@@ -318,6 +324,7 @@ button { font: inherit; }
   .brand img { width: 148px; }
   .menu-button { width: 44px; height: 44px; }
   .mobile-panel { top: 122px; }
+  .welcome-popup { width: calc(100vw - 24px); max-height: calc(100svh - 24px); }
   .inner-page { padding-top: 122px; }
   .hero { padding-top: 122px; }
   .hero-content { width: min(100% - 32px, 1360px); padding: clamp(30px, 5vh, 54px) 0 clamp(36px, 6vh, 62px); }

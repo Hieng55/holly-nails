@@ -130,6 +130,7 @@ export type SitePage = "home" | "services" | "about" | "gallery" | "contact";
 export default function HollySite({ page = "home" }: { page?: SitePage }) {
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const [open, setOpen] = useState(false);
+  const [welcomeOpen, setWelcomeOpen] = useState(false);
   const [activeService, setActiveService] = useState("pedicures");
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [selectedGallery, setSelectedGallery] = useState(0);
@@ -140,6 +141,21 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
+
+  useEffect(() => {
+    let timer: number | undefined;
+    const showWelcome = () => {
+      timer = window.setTimeout(() => setWelcomeOpen(true), 250);
+    };
+
+    if (document.readyState === "complete") showWelcome();
+    else window.addEventListener("load", showWelcome, { once: true });
+
+    return () => {
+      window.removeEventListener("load", showWelcome);
+      if (timer) window.clearTimeout(timer);
+    };
+  }, []);
 
   useEffect(() => {
     if (galleryOpen && galleryApi) galleryApi.scrollTo(selectedGallery, true);
@@ -201,6 +217,22 @@ export default function HollySite({ page = "home" }: { page?: SitePage }) {
 
   return (
     <main id="home" className="min-h-screen bg-[#090908] text-[#f8f2e6]">
+      <Dialog open={welcomeOpen} onOpenChange={setWelcomeOpen}>
+        <DialogContent className="welcome-popup" showCloseButton>
+          <DialogTitle className="sr-only">Halloween sale at Holly Nails &amp; Spa</DialogTitle>
+          <DialogDescription className="sr-only">Save 10% on all services October 26 through 31.</DialogDescription>
+          <Image
+            className="welcome-popup-artwork"
+            src="/images/popup.png"
+            alt="Halloween sale: 10% off all services October 26 through 31 at Holly Nails & Spa"
+            width={3000}
+            height={4000}
+            sizes="(max-width: 640px) calc(100vw - 24px), 480px"
+            priority
+          />
+        </DialogContent>
+      </Dialog>
+
       <header className="site-header">
         <div className="utility-bar">
           <div className="header-shell utility-inner">
